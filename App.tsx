@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import StartScreen from "./screens/StartScreen";
 import TaskListScreen from "./screens/TaskListScreen";
 import LoginScreen from "./screens/LoginScreen";
+import TestScreen from "./screens/TestScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,10 @@ class App extends React.Component{
                     headerShown: false
                 }}
             >
+                <Stack.Screen
+                    name="TestScreen"
+                    component={TestScreen}
+                ></Stack.Screen>
 
                 <Stack.Screen
                     name="StartScreen"

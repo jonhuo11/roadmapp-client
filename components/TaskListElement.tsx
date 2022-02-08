@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         flexWrap: 'nowrap',
         alignSelf: 'center'
     },
-    taskIconContainer : {
+    taskIconContainer : { // TODO: center the icon better
         flexBasis: "33%",
         flexDirection : "column",
         paddingRight: 10

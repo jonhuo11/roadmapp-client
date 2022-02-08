@@ -24,6 +24,13 @@ class StartScreen extends React.Component <any, any> {
                             this.props.navigation.navigate("LoginScreen");
                         }}
                     ></Button>
+
+                    <Button
+                        title="Go to testing screen"
+                        onPress={()=>{
+                            this.props.navigation.navigate("TestScreen");
+                        }}
+                    ></Button>
                 </View>
 
             </SafeAreaView>

@@ -43,8 +43,9 @@ class LoginScreen extends React.Component  {
                                         
                                         <TextInput
                                             style={styles.field}
-                                            placeholder='Username'
-                                            textContentType='username'
+                                            placeholder='Email'
+                                            textContentType='emailAddress'
+                                            keyboardType='email-address'
                                             maxLength={32}
                                         ></TextInput>
                                     </View>

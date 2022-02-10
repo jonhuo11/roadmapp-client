@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 import ShiftableListTest from "../components/testing/ShiftableListTest";
-import SwipeawayTest from "../components/testing/SwipeawayTest";
+import AnimationTests from "../components/testing/AnimationTests";
+import SwipeableTest from "../components/testing/SwipeableTest";
 
 class TestScreen extends React.Component <any, any> {
     render () {return(
@@ -23,9 +24,11 @@ class TestScreen extends React.Component <any, any> {
 
                     {/* ===== Put component tests below ===== */}
 
+                    <SwipeableTest></SwipeableTest>
+
                     <ShiftableListTest></ShiftableListTest>
 
-                    <SwipeawayTest></SwipeawayTest>
+                    <AnimationTests></AnimationTests>
 
                     {/* ===== End component tests area ===== */}
                 </View>

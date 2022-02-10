@@ -11,7 +11,8 @@ import {
     StyleSheet,
     FlatList,
     View,
-    Text
+    Text,
+    Animated
 } from 'react-native';
 
 // some test data for the list
@@ -67,6 +68,7 @@ class ShiftableListItemTest extends React.Component
     render() {return(
         <View
             style={styles.shiftableItem}
+
         >
             <Text>
                 Name: {this.props.name}

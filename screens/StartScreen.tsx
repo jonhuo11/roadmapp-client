@@ -26,9 +26,23 @@ class StartScreen extends React.Component <any, any> {
                     ></Button>
 
                     <Button
+                        title="signup"
+                        onPress={()=>{
+                            this.props.navigation.navigate("SignupScreen");
+                        }}
+                    ></Button>
+
+                    <Button
                         title="Go to testing screen"
                         onPress={()=>{
                             this.props.navigation.navigate("TestScreen");
+                        }}
+                    ></Button>
+
+                    <Button
+                        title="task creation"
+                        onPress={()=>{
+                            this.props.navigation.navigate("TaskCreationScreenManager");
                         }}
                     ></Button>
                 </View>

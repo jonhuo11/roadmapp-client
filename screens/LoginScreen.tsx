@@ -2,16 +2,13 @@ import * as React from 'react';
 import { 
     StyleSheet,
     View,
-    KeyboardAvoidingView,
     Text,
-    TextInput,
-    Platform
+    TextInput
 } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import Logo from "../assets/roadmapp-logo.svg";
-import HideableKeyboard from '../components/HideableKeyboardArea';
 import MinimalButton from '../components/MinimalButton';
+import StandardScreenContainer from '../components/StandardScreenContainer';
 
 class LoginScreen extends React.Component  {
 
@@ -20,88 +17,75 @@ class LoginScreen extends React.Component  {
         // display logo under login
 
         return (
-            <SafeAreaProvider>
-                <SafeAreaView style={{flex: 1}}>
-                    <KeyboardAvoidingView
-                        behavior={Platform.OS == "ios" ? "padding" : "height"}
-                        style={{flex: 1}}
-                    >
-                        <HideableKeyboard
-                            style={{
-                                flex: 1
-                            }}
+            <StandardScreenContainer>
+                <View style={styles.body}>
+                    <View style={styles.loginInterface}>
+                        <Text style={styles.appName}>roadmapp</Text>
+
+                        <Logo width={128} height={128}></Logo>
+
+                        <Text style={{marginBottom: 10, fontSize: 16}}>Plan your day better</Text>
+
+                        <View style={styles.fieldsContainer}>
+                            
+                            <TextInput
+                                style={styles.field}
+                                placeholder='Email'
+                                textContentType='emailAddress'
+                                keyboardType='email-address'
+                                maxLength={32}
+                            ></TextInput>
+                        </View>
+
+                        <View style={styles.fieldsContainer}>
+                            <TextInput
+                                style={styles.field}
+                                placeholder='Password'
+                                textContentType='password'
+                                secureTextEntry={true}
+                                maxLength={32}
+                            ></TextInput>
+                        </View>
+
+                        <View
+                            style={styles.fieldsContainer}
                         >
-                            <View style={styles.body}>
-                                <View style={styles.loginInterface}>
-                                    <Text style={styles.appName}>roadmapp</Text>
+                            <MinimalButton
+                                text='Log in'
+                                onPress={(e)=>{return;}}
+                                outerStyle={{
+                                    flex: 1,
+                                    borderWidth: 0,
+                                    padding: 0
+                                }}
+                                textStyle={{
+                                    fontSize: 18,
+                                    color: '#00f'
+                                }}
+                            ></MinimalButton>
+                        </View>
 
-                                    <Logo width={128} height={128}></Logo>
-
-                                    <Text style={{marginBottom: 10, fontSize: 16}}>Plan your day better</Text>
-
-                                    <View style={styles.fieldsContainer}>
-                                        
-                                        <TextInput
-                                            style={styles.field}
-                                            placeholder='Email'
-                                            textContentType='emailAddress'
-                                            keyboardType='email-address'
-                                            maxLength={32}
-                                        ></TextInput>
-                                    </View>
-
-                                    <View style={styles.fieldsContainer}>
-                                        <TextInput
-                                            style={styles.field}
-                                            placeholder='Password'
-                                            textContentType='password'
-                                            secureTextEntry={true}
-                                            maxLength={32}
-                                        ></TextInput>
-                                    </View>
-
-                                    <View
-                                        style={styles.fieldsContainer}
-                                    >
-                                        <MinimalButton
-                                            text='Log in'
-                                            onPress={(e)=>{return;}}
-                                            outerStyle={{
-                                                flex: 1,
-                                                borderWidth: 0,
-                                                padding: 0
-                                            }}
-                                            textStyle={{
-                                                fontSize: 18,
-                                                color: '#00f'
-                                            }}
-                                        ></MinimalButton>
-                                    </View>
-
-                                    <View
-                                        style={styles.fieldsContainer}
-                                    >
-                                        <MinimalButton
-                                            text='Sign up'
-                                            onPress={(e)=>{return;}}
-                                            outerStyle={{
-                                                flex: 1,
-                                                borderWidth: 0,
-                                                padding: 0,
-                                                marginBottom: 0
-                                            }}
-                                            textStyle={{
-                                                fontSize: 18,
-                                                color: '#00f'
-                                            }}
-                                        ></MinimalButton>
-                                    </View>
-                                </View>
-                            </View>
-                        </HideableKeyboard>
-                    </KeyboardAvoidingView>
-                </SafeAreaView>
-            </SafeAreaProvider>
+                        <View
+                            style={styles.fieldsContainer}
+                        >
+                            <MinimalButton
+                                text='Sign up'
+                                onPress={(e)=>{return;}}
+                                outerStyle={{
+                                    flex: 1,
+                                    borderWidth: 0,
+                                    padding: 0,
+                                    marginBottom: 0
+                                }}
+                                textStyle={{
+                                    fontSize: 18,
+                                    color: '#00f'
+                                }}
+                            ></MinimalButton>
+                        </View>
+                    </View>
+                </View>
+            </StandardScreenContainer>
         );
     }
 }

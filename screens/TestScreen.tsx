@@ -5,7 +5,8 @@ import * as React from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Button
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 import ShiftableListTest from "../components/testing/ShiftableListTest";
@@ -29,6 +30,28 @@ class TestScreen extends React.Component <any, any> {
                     <ShiftableListTest></ShiftableListTest>
 
                     <AnimationTests></AnimationTests>
+
+                    <View
+                        style={{
+                            borderWidth: 1,
+                            height: 300
+                        }}
+
+                        onStartShouldSetResponder={()=>{
+                            return true;
+                        }}
+                        onResponderStart={(e)=>{
+                            console.log("pressed view" + e.nativeEvent.locationX);
+                        }}
+                        onResponderMove={(e)=>{
+                            console.log(e.nativeEvent.locationX + ", " + e.nativeEvent.locationY);
+                        }}
+                    >
+                        <Button
+                            title="test"
+                            onPress={(e)=>{console.log("pressed button");}}
+                        ></Button>
+                    </View>
 
                     {/* ===== End component tests area ===== */}
                 </View>

@@ -4,8 +4,13 @@ import {AntDesign} from "@expo/vector-icons";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Pressable
 } from "react-native";
+
+interface INavFunction {
+    ():any;
+}
 
 interface ITaskCreationBottomGestureLabelsProps {
     leftText: string;
@@ -13,13 +18,19 @@ interface ITaskCreationBottomGestureLabelsProps {
     rightText: string;
     areaFlexProportion: number;
     wrapAt? : number;
+    leftNav? : INavFunction;
+    rightNav? : INavFunction;
+    upNav? : INavFunction;
 }
 
 class TaskCreationBottomGestureLabels extends React.Component 
 <ITaskCreationBottomGestureLabelsProps, {}>
 {
     static defaultProps = {
-        wrapAt: 40
+        wrapAt: 40,
+        leftNav: ()=>{},
+        rightNav: ()=>{},
+        upNav: ()=>{},
     };
 
     render() {
@@ -34,14 +45,18 @@ class TaskCreationBottomGestureLabels extends React.Component
                 <View style={styles.lcol}>
                     <View style={styles.dirContainer}>
                         <View style={styles.dirIconContainer}>
-                            <AntDesign
-                                name="left"
-                                style={styles.dirIcon}
-                            />
+                            <Pressable onPressOut={this.props.leftNav}>
+                                <AntDesign
+                                    name="left"
+                                    style={styles.dirIcon}
+                                />
+                            </Pressable>
                         </View>
                         
                         <View style={[styles.descTextContainer, {width: this.props.wrapAt}]}>
+                            <Pressable onPressOut={this.props.leftNav}>
                             <Text style={styles.descText}>{this.props.leftText}</Text>
+                            </Pressable>
                         </View>
                     </View>
 
@@ -58,17 +73,21 @@ class TaskCreationBottomGestureLabels extends React.Component
                                     marginBottom: 5
                                 }
                             ]}>
+                            <Pressable onPressOut={this.props.upNav}>
                             <Text style={styles.descText}>{this.props.midText}</Text>
+                            </Pressable>
                         </View>
 
                         <View style={{
                             flexDirection: "row",
                             justifyContent: "center"
                         }}>
+                            <Pressable onPressOut={this.props.upNav}>
                             <AntDesign
                                 name="up"
                                 style={styles.dirIcon}
                             />
+                            </Pressable>
                         </View>
                     </View>
                 </View>
@@ -80,14 +99,18 @@ class TaskCreationBottomGestureLabels extends React.Component
                         }
                     ]}>
                         <View style={styles.dirIconContainer}>
+                            <Pressable onPressOut={this.props.rightNav}>
                             <AntDesign
                                 name="right"
                                 style={styles.dirIcon}
                             />
+                            </Pressable>
                         </View>
 
                         <View style={[styles.descTextContainer, {width: this.props.wrapAt}]}>
+                            <Pressable onPressOut={this.props.rightNav}>
                             <Text style={styles.descText}>{this.props.rightText}</Text>
+                            </Pressable>
                         </View>
                     </View>
 

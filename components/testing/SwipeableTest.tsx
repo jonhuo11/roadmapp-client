@@ -24,7 +24,7 @@ export default class SwipeableTest extends React.Component {
                 }}
                 onStartShouldSetResponder={()=>{return true}}
                 
-                onResponderStart={(e)=>{
+                onResponderStart={(e)=>{ // WTF? why is this prop not documented???
                     this.setState({
                         startpt: this.state.x, // current pos
                         touchpt: e.nativeEvent.locationX // where finger touched

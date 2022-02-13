@@ -25,7 +25,10 @@ interface IVerticalCurveSliderSelectProps {
     width: string | number; // percentage of the hitbox size
     height: string | number;
     hboxWidth: string | number;
-    onSelect: (e: any)=>any; // once the user lifts their finger, having selected a time
+    scalerFunction: (x: number)=>number;
+    scalerMaxInput: number;
+    textComputeFunction: (value: number)=>string;
+    onSelect: (currentValue: number)=>any; // once the user lifts their finger, having selected a time
 }
 
 interface IVerticalCurveSliderSelectState {
@@ -35,7 +38,7 @@ interface IVerticalCurveSliderSelectState {
 class VerticalCurveSliderSelect extends React.Component <IVerticalCurveSliderSelectProps, IVerticalCurveSliderSelectState> {
     pan: PanGesture;
 
-    dynHeight: number; // max height of the bar
+    dynMaxHeight: number; // max height of the bar
     barstartpt: number;
     fingerstartpt: number;
 
@@ -47,7 +50,7 @@ class VerticalCurveSliderSelect extends React.Component <IVerticalCurveSliderSel
     {
         super(props);
 
-        this.dynHeight = 0;
+        this.dynMaxHeight = 0;
         // bar state
         this.barstartpt = 0;
         this.fingerstartpt = 0;
@@ -83,15 +86,23 @@ class VerticalCurveSliderSelect extends React.Component <IVerticalCurveSliderSel
         if (newRealY < 0)
         {
             newRealY = 0;
-        } else if (newRealY > 100)
+        } else if (newRealY > this.dynMaxHeight)
         {
-            newRealY = 100;
+            newRealY = this.dynMaxHeight;
         }
-        console.log(newRealY);
+        //console.log(newRealY);
         this.setState({
             barY: newRealY
         });
         //console.log(newRealY);
+    }
+
+    // reads state.y
+    computeRealValue():number
+    {
+        const percentOfDynMaxY: number = this.dynMaxHeight == 0 ? 0 : this.state.barY / (this.dynMaxHeight);
+        const scalerOut = this.props.scalerFunction(percentOfDynMaxY * this.props.scalerMaxInput);
+        return scalerOut;
     }
 
     render() {
@@ -102,7 +113,7 @@ class VerticalCurveSliderSelect extends React.Component <IVerticalCurveSliderSel
             >
                 <View
                     style={{
-                        borderWidth:1,
+                        //borderWidth:1,
                         width: this.props.hboxWidth,
                         height: "100%",
                         flexDirection: "column",
@@ -117,7 +128,7 @@ class VerticalCurveSliderSelect extends React.Component <IVerticalCurveSliderSel
                             flexShrink: 1
                         }}
                     >
-                        XXhXXm
+                        {this.props.textComputeFunction(this.computeRealValue())}
                     </Text>
                     
                     {/* the actual slider itself */}
@@ -128,6 +139,11 @@ class VerticalCurveSliderSelect extends React.Component <IVerticalCurveSliderSel
                             flexDirection: "column-reverse",
                             flexShrink: 9
                         }]}
+
+                        onLayout={(e)=>{
+                            // upon loading the page, set the max height
+                            this.dynMaxHeight = e.nativeEvent.layout.height;
+                        }}
                     >
                         <View
                             style={[styles.sliderbar, {

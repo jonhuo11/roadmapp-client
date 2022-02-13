@@ -62,7 +62,25 @@ export default class TaskTimingScreen extends SwipeNavigable <any, any>{
                                 hboxWidth="100%"
                                 width="30%"
                                 height="80%"
-                                onSelect={()=>{}}
+                                scalerFunction={(x)=>{return x**2}}
+
+                                scalerMaxInput={128} // will need to base this off user stuff
+                                textComputeFunction={(value)=>{
+                                    //TODO will need to compute this based on user settings and stuff once redux is added
+
+                                    var v = Math.round(value);
+
+                                    var max = 128**2;
+                                    var tempTimeMax = 360;
+                                    var p = v/max;
+                                    var ptime = Math.round(p * tempTimeMax);
+                                    var quotient = Math.floor(ptime/60);
+                                    var remainder = ptime % 60;
+
+                                    return quotient + "h" + remainder + "m";
+                                }}
+
+                                onSelect={()=>{}} // set the value as this
                             ></VerticalCurveSliderSelect>
 
                         </View>

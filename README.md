@@ -1,11 +1,9 @@
 # Official roadmapp Mobile Client
 This is the official mobile client for the roadmapp task management app, maintained by [@jonhuo11](https://jonhuo11.github.io).
 
-roadmapp is a simple, intuitive, gesture-based app that helps people plan out and achieve their daily tasks better.
+For those interested in learning more about roadmapp, a link to the roadmapp website will be provided soon.
 
-Section under construction
-
-# Tips for modifying and contributing
+# Modifying and contributing
 Section under construction
 
 # Future plans

@@ -39,15 +39,15 @@ class TaskTimingScreen extends React.Component <any, {}>{
             >
                 <StandardScreenContainer>
                     <View style={TaskCreationStyles.body}>
-                        <View style={TaskCreationStyles.namingScreenDescContainer}>
-                            <Text style={TaskCreationStyles.namingScreenDesc}>
+                        <View style={TaskCreationStyles.screenDescContainer}>
+                            <Text style={TaskCreationStyles.screenDesc}>
                                 How long will it take?
                             </Text>
                         </View>
 
                         {/* contains the main slider feature */}
                         <View
-                            style={[TaskCreationStyles.nameInputContainer, {
+                            style={[TaskCreationStyles.centerContainer, {
                                 //borderWidth: 1,
                                 flexDirection: "column",
                                 alignItems: "center",

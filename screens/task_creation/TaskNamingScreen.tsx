@@ -29,16 +29,16 @@ export const TaskCreationStyles = StyleSheet.create({
         flex: 1
         //borderWidth: 1
     },
-    namingScreenDescContainer : {
+    screenDescContainer : {
         flex: 2,
         flexDirection: "column",
         justifyContent: "flex-end"
     },
-    namingScreenDesc: {
+    screenDesc: {
         fontSize: 32,
         textAlign: "center"
     },
-    nameInputContainer : {
+    centerContainer : {
         flex: 5,
         flexDirection: "column",
         justifyContent: "center",
@@ -70,13 +70,13 @@ export default class TaskNamingScreen extends React.Component<any,{}>
                 <StandardScreenContainer>
                     <View style={styles.body}>
 
-                        <View style={styles.namingScreenDescContainer}>
-                            <Text style={styles.namingScreenDesc}>
+                        <View style={styles.screenDescContainer}>
+                            <Text style={styles.screenDesc}>
                                 Captain, what's our next task?
                             </Text>
                         </View>
 
-                        <View style={styles.nameInputContainer}>
+                        <View style={styles.centerContainer}>
                             <TextInput
                                 hitSlop={{top: 25, left: 25, right: 25, bottom: 25}}
                                 style={styles.nameInput}

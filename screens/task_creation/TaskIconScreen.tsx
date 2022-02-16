@@ -6,6 +6,7 @@ import SwipeDirectionCalculator from "../../api/SwipeDirectionCalculator";
 import StandardScreenContainer from "../../components/StandardScreenContainer";
 import SwipeNavigable from "../../components/SwipeNavigable";
 import TaskCreationBottomGestureLabels from "../../components/TaskCreationBottomGestureLabels";
+import { TaskCreationStyles } from "./TaskNamingScreen";
 
 class TaskIconScreen extends React.Component <any, {}> {
     
@@ -22,17 +23,29 @@ class TaskIconScreen extends React.Component <any, {}> {
                 goDown={()=>{}}
             >
                 <StandardScreenContainer>
-                    <View>
-                        <View>
-                            <Text>
-                                hello test swipe here
+                    <View
+                        style={TaskCreationStyles.body}
+                    >
+                        <View
+                            style={TaskCreationStyles.screenDescContainer}
+                        >
+                            <Text
+                                style={TaskCreationStyles.screenDesc}
+                            >
+                                What does it look like?
                             </Text>
+                        </View>
+
+                        <View
+                            style={TaskCreationStyles.centerContainer}
+                        >
+                            <Text>whattup</Text>
                         </View>
 
                         <TaskCreationBottomGestureLabels
                             leftText="Task Duration"
-                            rightText="Add this task to list"
-                            midText="Add this task to list"
+                            rightText="Finish"
+                            midText="Finish"
                             areaFlexProportion={2}
                             wrapAt={65}
 

@@ -1,4 +1,4 @@
-import { Directions, GestureStateChangeEvent, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
+import {GestureStateChangeEvent, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
 
 /*
 export enum Directions {

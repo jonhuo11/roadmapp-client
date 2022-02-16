@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAvoidingView, Platform } from "react-native";
-import HideableKeyboard from "./HideableKeyboardArea";
+import HideableKeyboard from "../keyboard/HideableKeyboardArea";
 
 class StandardScreenContainer extends React.Component {
     render() {

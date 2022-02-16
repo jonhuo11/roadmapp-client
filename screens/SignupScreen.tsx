@@ -6,8 +6,8 @@ import {
     TextInput,
 } from 'react-native';
 
-import MinimalButton from '../components/MinimalButton';
-import StandardScreenContainer from '../components/StandardScreenContainer';
+import MinimalButton from '../components/buttonlike/MinimalButton';
+import StandardScreenContainer from '../components/container/StandardScreenContainer';
 
 class SignupScreen extends React.Component  {
 

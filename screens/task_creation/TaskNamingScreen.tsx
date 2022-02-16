@@ -12,12 +12,15 @@ import {
     Keyboard
 } from "react-native";
 import { Directions, Gesture, GestureDetector, GestureStateChangeEvent, PanGesture, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
-import SwipeDirectionCalculator from "../../api/SwipeDirectionCalculator";
+import SwipeDirectionCalculator from "../../util/SwipeDirectionCalculator";
 import {StackActions} from "@react-navigation/native"
 
-import StandardScreenContainer from "../../components/StandardScreenContainer";
-import SwipeNavigable from "../../components/SwipeNavigable";
-import TaskCreationBottomGestureLabels from "../../components/TaskCreationBottomGestureLabels";
+import StandardScreenContainer from "../../components/container/StandardScreenContainer";
+import SwipeNavigable from "../../components/container/SwipeNavigable";
+import TaskCreationBottomGestureLabels from "../../components/task_list/TaskCreationBottomGestureLabels";
+
+// Right: task timing
+// left: view list
 
 export const TaskCreationStyles = StyleSheet.create({
     body: {
@@ -44,7 +47,7 @@ export const TaskCreationStyles = StyleSheet.create({
         justifyContent: "center",
         borderWidth: 0
     },
-    nameInput: {
+    inputField: {
         borderBottomWidth: 1,
         fontSize: 26
         //top: "32.5%"
@@ -79,7 +82,7 @@ export default class TaskNamingScreen extends React.Component<any,{}>
                         <View style={styles.centerContainer}>
                             <TextInput
                                 hitSlop={{top: 25, left: 25, right: 25, bottom: 25}}
-                                style={styles.nameInput}
+                                style={styles.inputField}
                                 placeholder="ex: Take notes on new math lectures"
                                 multiline={true}
                                 blurOnSubmit={true}

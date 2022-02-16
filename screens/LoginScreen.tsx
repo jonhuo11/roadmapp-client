@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 
 import Logo from "../assets/roadmapp-logo.svg";
-import MinimalButton from '../components/MinimalButton';
-import StandardScreenContainer from '../components/StandardScreenContainer';
+import MinimalButton from '../components/buttonlike/MinimalButton';
+import StandardScreenContainer from '../components/container/StandardScreenContainer';
 
 class LoginScreen extends React.Component  {
 

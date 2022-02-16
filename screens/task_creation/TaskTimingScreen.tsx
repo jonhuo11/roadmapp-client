@@ -13,11 +13,14 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import VerticalCurveSliderSelect from "../../components/VerticalCurveSliderSelect";
-import StandardScreenContainer from "../../components/StandardScreenContainer";
-import SwipeNavigable from "../../components/SwipeNavigable";
-import TaskCreationBottomGestureLabels from "../../components/TaskCreationBottomGestureLabels";
+import VerticalCurveSliderSelect from "../../components/sliding/VerticalCurveSliderSelect";
+import StandardScreenContainer from "../../components/container/StandardScreenContainer";
+import SwipeNavigable from "../../components/container/SwipeNavigable";
+import TaskCreationBottomGestureLabels from "../../components/task_list/TaskCreationBottomGestureLabels";
 import { TaskCreationStyles } from "./TaskNamingScreen";
+
+// left: TaskNaming
+// right: TaskIcon
 
 const styles = StyleSheet.create({
 

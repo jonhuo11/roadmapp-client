@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { PanGesture, Gesture, Directions, GestureStateChangeEvent, PanGestureHandlerEventPayload, GestureDetector } from "react-native-gesture-handler";
-import SwipeDirectionCalculator from "../api/SwipeDirectionCalculator";
+import SwipeDirectionCalculator from "../../util/SwipeDirectionCalculator";
 
 export default abstract class SwipeNavigable extends React.Component
 <

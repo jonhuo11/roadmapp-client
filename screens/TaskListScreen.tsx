@@ -1,7 +1,7 @@
 import * as React from "react";
 import {StyleSheet, View, Text} from "react-native";
 import { SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import TaskList from "../components/TaskList";
+import TaskList from "../components/task_list/TaskList";
 
 class TaskListScreen extends React.Component <any, any> {
     render () {return(

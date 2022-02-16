@@ -1,14 +1,28 @@
 import { StackActions } from "@react-navigation/native";
 import * as React from "react";
-import { View , Text } from "react-native";
-import { Directions, GestureDetector, GestureStateChangeEvent, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
-import SwipeDirectionCalculator from "../../api/SwipeDirectionCalculator";
-import StandardScreenContainer from "../../components/StandardScreenContainer";
-import SwipeNavigable from "../../components/SwipeNavigable";
-import TaskCreationBottomGestureLabels from "../../components/TaskCreationBottomGestureLabels";
+import { View , Text, TextInput} from "react-native";
+import StandardScreenContainer from "../../components/container/StandardScreenContainer";
+import SwipeNavigable from "../../components/container/SwipeNavigable";
+import EmojiList from "../../components/emoji_picker/EmojiPicker";
+import TaskCreationBottomGestureLabels from "../../components/task_list/TaskCreationBottomGestureLabels";
+import { SearchEmojis } from "../../util/EmojiHelpers";
 import { TaskCreationStyles } from "./TaskNamingScreen";
 
-class TaskIconScreen extends React.Component <any, {}> {
+// left: TaskTiming
+// right: submit task
+
+
+class TaskIconScreen extends React.Component <any, {
+    emojiTemp: string
+}> {
+
+    state = {
+        emojiTemp : "joy"
+    }
+
+    constructor(props:any) {
+        super(props)
+    }
     
     render() {
         return (
@@ -39,13 +53,34 @@ class TaskIconScreen extends React.Component <any, {}> {
                         <View
                             style={TaskCreationStyles.centerContainer}
                         >
-                            <Text>whattup</Text>
+                            <EmojiList
+                                temp={this.state.emojiTemp}
+                            ></EmojiList>
+
+                            <TextInput
+                                style={TaskCreationStyles.inputField}
+                                placeholder="Start describing the task..."
+                                multiline={false}
+                                blurOnSubmit={true}
+                                hitSlop={{top: 25, left: 25, right: 25, bottom: 25}}
+                                onChangeText={(txt)=>{
+                                    SearchEmojis(txt, 10, (res, err)=>{
+                                        //console.log("searching for emojis");
+                                        if (err != null) {
+                                            console.log(err);
+                                        } else {
+                                            //console.log(res);
+                                            this.setState({emojiTemp:res[0]})
+                                        }
+                                    });
+                                }}
+                            ></TextInput>
                         </View>
 
                         <TaskCreationBottomGestureLabels
                             leftText="Task Duration"
-                            rightText="Finish"
-                            midText="Finish"
+                            rightText="Finish editing"
+                            midText="Finish editing"
                             areaFlexProportion={2}
                             wrapAt={65}
 

@@ -7,9 +7,10 @@ import {
     StyleSheet,
     Pressable
 } from "react-native";
+import RateLimitedPressable from "../buttonlike/RateLimitedPressable";
 
 interface INavFunction {
-    ():any;
+    ():void;
 }
 
 interface ITaskCreationBottomGestureLabelsProps {
@@ -28,9 +29,9 @@ class TaskCreationBottomGestureLabels extends React.Component
 {
     static defaultProps = {
         wrapAt: 40,
-        leftNav: ()=>{},
-        rightNav: ()=>{},
-        upNav: ()=>{},
+        leftNav: ():void=>{},
+        rightNav: ():void=>{},
+        upNav: ():void=>{},
     };
 
     render() {
@@ -45,18 +46,18 @@ class TaskCreationBottomGestureLabels extends React.Component
                 <View style={styles.lcol}>
                     <View style={styles.dirContainer}>
                         <View style={styles.dirIconContainer}>
-                            <Pressable onPressOut={this.props.leftNav}>
+                            <RateLimitedPressable interval={350} cb={this.props.leftNav}>
                                 <AntDesign
                                     name="left"
                                     style={styles.dirIcon}
                                 />
-                            </Pressable>
+                            </RateLimitedPressable>
                         </View>
                         
                         <View style={[styles.descTextContainer, {width: this.props.wrapAt}]}>
-                            <Pressable onPressOut={this.props.leftNav}>
+                            <RateLimitedPressable interval={350} cb={this.props.leftNav}>
                             <Text style={styles.descText}>{this.props.leftText}</Text>
-                            </Pressable>
+                            </RateLimitedPressable>
                         </View>
                     </View>
 
@@ -73,21 +74,21 @@ class TaskCreationBottomGestureLabels extends React.Component
                                     marginBottom: 5
                                 }
                             ]}>
-                            <Pressable onPressOut={this.props.upNav}>
+                            <RateLimitedPressable interval={350} cb={this.props.upNav}>
                             <Text style={styles.descText}>{this.props.midText}</Text>
-                            </Pressable>
+                            </RateLimitedPressable>
                         </View>
 
                         <View style={{
                             flexDirection: "row",
                             justifyContent: "center"
                         }}>
-                            <Pressable onPressOut={this.props.upNav}>
+                            <RateLimitedPressable interval={350} cb={this.props.upNav}>
                             <AntDesign
                                 name="up"
                                 style={styles.dirIcon}
                             />
-                            </Pressable>
+                            </RateLimitedPressable>
                         </View>
                     </View>
                 </View>
@@ -99,18 +100,18 @@ class TaskCreationBottomGestureLabels extends React.Component
                         }
                     ]}>
                         <View style={styles.dirIconContainer}>
-                            <Pressable onPressOut={this.props.rightNav}>
+                            <RateLimitedPressable interval={350} cb={this.props.rightNav}>
                             <AntDesign
                                 name="right"
                                 style={styles.dirIcon}
                             />
-                            </Pressable>
+                            </RateLimitedPressable>
                         </View>
 
                         <View style={[styles.descTextContainer, {width: this.props.wrapAt}]}>
-                            <Pressable onPressOut={this.props.rightNav}>
+                            <RateLimitedPressable interval={350} cb={this.props.rightNav}>
                             <Text style={styles.descText}>{this.props.rightText}</Text>
-                            </Pressable>
+                            </RateLimitedPressable>
                         </View>
                     </View>
 

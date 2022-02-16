@@ -1,11 +1,18 @@
+/*
+
+TODO features
+
+- color gradient on the slider from green to red
+- in slider control area, slideX > (1.5 * slideX) should switch pages
+
+*/
+import { StackActions } from "@react-navigation/native";
 import * as React from "react";
 import {
     View,
     Text,
     StyleSheet
 } from "react-native";
-import { Directions, GestureDetector, GestureStateChangeEvent, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
-import SwipeDirectionCalculator from "../../api/SwipeDirectionCalculator";
 import VerticalCurveSliderSelect from "../../components/VerticalCurveSliderSelect";
 import StandardScreenContainer from "../../components/StandardScreenContainer";
 import SwipeNavigable from "../../components/SwipeNavigable";
@@ -16,24 +23,20 @@ const styles = StyleSheet.create({
 
 });
 
-export default class TaskTimingScreen extends SwipeNavigable <any, any>{
-    
-    onSwipeEnd(e: GestureStateChangeEvent<PanGestureHandlerEventPayload>): void {
-        this.navigateTo(SwipeDirectionCalculator(this.swipeStart, e));
-    }
-
-    navigateTo(d: Directions)
-    {
-        switch(d)
-        {
-            case Directions.RIGHT:
-                this.props.navigation.navigate("TaskNamingScreen");
-        }
-    }
+class TaskTimingScreen extends React.Component <any, {}>{
 
     render() {
         return(
-            <GestureDetector gesture={this.pan}>
+            <SwipeNavigable
+                goRight={()=>{
+                    this.props.navigation.dispatch(StackActions.push("TaskIconScreen"));
+                }}
+                goLeft={()=>{
+                    this.props.navigation.dispatch(StackActions.pop());
+                }}
+                goUp={()=>{}}
+                goDown={()=>{}}
+            >
                 <StandardScreenContainer>
                     <View style={TaskCreationStyles.body}>
                         <View style={TaskCreationStyles.namingScreenDescContainer}>
@@ -93,13 +96,18 @@ export default class TaskTimingScreen extends SwipeNavigable <any, any>{
                             wrapAt={65}
 
                             leftNav={()=>{
-                                this.navigateTo(Directions.RIGHT);
+                                this.props.navigation.dispatch(StackActions.pop())
+                            }}
+                            rightNav={()=>{
+                                this.props.navigation.dispatch(StackActions.push("TaskIconScreen"));
                             }}
                         />
                     </View>
                 </StandardScreenContainer>
-            </GestureDetector>
+            </SwipeNavigable>
         )
     }
 
 }
+
+export default TaskTimingScreen

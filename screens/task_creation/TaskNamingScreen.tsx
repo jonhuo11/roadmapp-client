@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { Directions, Gesture, GestureDetector, GestureStateChangeEvent, PanGesture, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
 import SwipeDirectionCalculator from "../../api/SwipeDirectionCalculator";
+import {StackActions} from "@react-navigation/native"
 
 import StandardScreenContainer from "../../components/StandardScreenContainer";
 import SwipeNavigable from "../../components/SwipeNavigable";
@@ -51,50 +52,21 @@ export const TaskCreationStyles = StyleSheet.create({
 });
 const styles = TaskCreationStyles;
 
-export default class TaskNamingScreen extends SwipeNavigable <any, any>
+export default class TaskNamingScreen extends React.Component<any,{}>
 {
-    /*
-    pan: PanGesture;
-    swipeStart = {x: 0, y: 0};
-
-    constructor(props: any) {
-        super(props);
-
-        // swipe gesture
-        this.pan = Gesture.Pan();
-        this.pan.config = {
-            maxPointers: 1
-        };
-
-        this.pan.onBegin((e)=>{
-            this.swipeStart = {
-                x: e.x,
-                y: e.y
-            };
-        });
-        this.pan.onEnd((e)=>{
-            console.log("swipe");
-            // bigger difference is direction
-            this.navigateTo(SwipeDirectionCalculator(this.swipeStart, e));
-        });
-    }*/
-
-    onSwipeEnd(e: GestureStateChangeEvent<PanGestureHandlerEventPayload>): void {
-        this.navigateTo(SwipeDirectionCalculator(this.swipeStart, e));
-    }
-
-    navigateTo(d: Directions)
-    {
-        switch(d)
-        {
-            case Directions.LEFT:
-                this.props.navigation.navigate("TaskTimingScreen");
-        }
-    }
     
     render() {
         return (
-            <GestureDetector gesture={this.pan}>
+            <SwipeNavigable
+                goRight={()=>{
+                    this.props.navigation.dispatch(StackActions.push("TaskTimingScreen"));
+                }}
+                goLeft={()=>{
+                
+                }}
+                goUp={()=>{}}
+                goDown={()=>{}}
+            >
                 <StandardScreenContainer>
                     <View style={styles.body}>
 
@@ -118,9 +90,8 @@ export default class TaskNamingScreen extends SwipeNavigable <any, any>
                                         // small delay for visual grepping
                                         Keyboard.dismiss();
                                         setTimeout(() => {
-                                            console.log(this.context);
-                                            this.navigateTo(Directions.LEFT); // left is right
-                                        }, 0);
+                                            this.props.navigation.dispatch(StackActions.push("TaskTimingScreen"));
+                                        }, 250);
                                     }
                                 }
                             />
@@ -134,13 +105,12 @@ export default class TaskNamingScreen extends SwipeNavigable <any, any>
                             wrapAt={65}
 
                             rightNav={()=>{
-                                //console.log("hi");
-                                this.navigateTo(Directions.LEFT);
+                                this.props.navigation.dispatch(StackActions.push("TaskTimingScreen"));
                             }}
                         />
                     </View>
                 </StandardScreenContainer>
-            </GestureDetector>
+            </SwipeNavigable>
         );
     }
 }

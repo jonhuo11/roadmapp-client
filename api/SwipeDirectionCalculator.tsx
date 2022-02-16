@@ -21,10 +21,10 @@ export default function (
 
     if (Math.abs(dX) > Math.abs(dY))
     {
-        return dX > 0 ? Directions.RIGHT : Directions.LEFT;
+        return dX < 0 ? "r": "l";
     }
     else
     {
-        return dY > 0 ? Directions.DOWN : Directions.UP;
+        return dY < 0 ? "u" : "d";
     }
 };

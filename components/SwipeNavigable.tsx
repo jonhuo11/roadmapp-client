@@ -1,10 +1,20 @@
 //TODO: this is a bit of a hack. we will make own wrapper like react navigator eventually
 
 import * as React from "react";
-import { PanGesture, Gesture, Directions, GestureStateChangeEvent, PanGestureHandlerEventPayload } from "react-native-gesture-handler";
+import { PanGesture, Gesture, Directions, GestureStateChangeEvent, PanGestureHandlerEventPayload, GestureDetector } from "react-native-gesture-handler";
 import SwipeDirectionCalculator from "../api/SwipeDirectionCalculator";
 
-export default abstract class SwipeNavigable <Props, State> extends React.Component <any, any>{
+export default abstract class SwipeNavigable extends React.Component
+<
+    {
+        goRight: ()=>any;
+        goLeft: ()=>any;
+        goUp: ()=>any;
+        goDown: ()=>any;
+    },
+    {}
+>
+{
     pan: PanGesture;
     swipeStart = {x: 0, y: 0};
 
@@ -32,10 +42,25 @@ export default abstract class SwipeNavigable <Props, State> extends React.Compon
         };  
     }
 
-    onSwipeEnd(e: GestureStateChangeEvent<PanGestureHandlerEventPayload>){}
-
-    navigateTo(d: Directions)
-    {
-        
+    onSwipeEnd(e: GestureStateChangeEvent<PanGestureHandlerEventPayload>){
+        this.navigateTo(SwipeDirectionCalculator(this.swipeStart, e));
     }
+
+    navigateTo(d: string)
+    {
+        console.log(d);
+        if (d == "r") {
+            this.props.goRight();
+        } else if (d == "l") {
+            this.props.goLeft();
+        }
+    }
+
+    render(){return(
+        <GestureDetector gesture={this.pan}>
+            {this.props.children}
+        </GestureDetector>
+    );}
+
+
 };

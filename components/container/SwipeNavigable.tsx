@@ -48,7 +48,7 @@ export default abstract class SwipeNavigable extends React.Component
 
     navigateTo(d: string)
     {
-        console.log(d);
+        //console.log(d);
         if (d == "r") {
             this.props.goRight();
         } else if (d == "l") {

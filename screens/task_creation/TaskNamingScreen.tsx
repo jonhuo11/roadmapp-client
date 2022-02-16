@@ -49,7 +49,8 @@ export const TaskCreationStyles = StyleSheet.create({
     },
     inputField: {
         borderBottomWidth: 1,
-        fontSize: 26
+        fontSize: 26,
+        textAlign: "center"
         //top: "32.5%"
     }
 });

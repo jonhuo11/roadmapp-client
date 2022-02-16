@@ -3,7 +3,7 @@ import * as React from "react";
 import { View , Text, TextInput} from "react-native";
 import StandardScreenContainer from "../../components/container/StandardScreenContainer";
 import SwipeNavigable from "../../components/container/SwipeNavigable";
-import EmojiList from "../../components/emoji_picker/EmojiPicker";
+import EmojiList from "../../components/emoji_list/EmojiList";
 import TaskCreationBottomGestureLabels from "../../components/task_list/TaskCreationBottomGestureLabels";
 import { SearchEmojis } from "../../util/EmojiHelpers";
 import { TaskCreationStyles } from "./TaskNamingScreen";
@@ -13,11 +13,11 @@ import { TaskCreationStyles } from "./TaskNamingScreen";
 
 
 class TaskIconScreen extends React.Component <any, {
-    emojiTemp: string
+    emojis: string[]
 }> {
 
     state = {
-        emojiTemp : "joy"
+        emojis : []
     }
 
     constructor(props:any) {
@@ -51,30 +51,43 @@ class TaskIconScreen extends React.Component <any, {
                         </View>
 
                         <View
-                            style={TaskCreationStyles.centerContainer}
+                            style={[TaskCreationStyles.centerContainer, {
+                                justifyContent:"space-evenly"
+                            }]}
                         >
                             <EmojiList
-                                temp={this.state.emojiTemp}
+                                emojisize={128}
+                                ordered={this.state.emojis}
                             ></EmojiList>
 
-                            <TextInput
-                                style={TaskCreationStyles.inputField}
-                                placeholder="Start describing the task..."
-                                multiline={false}
-                                blurOnSubmit={true}
-                                hitSlop={{top: 25, left: 25, right: 25, bottom: 25}}
-                                onChangeText={(txt)=>{
-                                    SearchEmojis(txt, 10, (res, err)=>{
-                                        //console.log("searching for emojis");
-                                        if (err != null) {
-                                            console.log(err);
-                                        } else {
-                                            //console.log(res);
-                                            this.setState({emojiTemp:res[0]})
-                                        }
-                                    });
+                            <View
+                                style={{
+                                    //borderWidth:1,
+                                    alignSelf:"center"
                                 }}
-                            ></TextInput>
+                            >
+                                <TextInput
+                                    style={[TaskCreationStyles.inputField, {
+                                        //borderWidth:1,
+                                        //flexGrow:0
+                                    }]}
+                                    placeholder="Start describing the task..."
+                                    multiline={false}
+                                    blurOnSubmit={true}
+                                    hitSlop={{top: 25, left: 25, right: 25, bottom: 25}}
+                                    onChangeText={(txt)=>{
+                                        SearchEmojis(txt, 10, (res, err)=>{
+                                            //console.log("searching for emojis");
+                                            if (err != null) {
+                                                console.log(err);
+                                            } else {
+                                                //console.log(res);
+                                                this.setState({emojis:res})
+                                            }
+                                        });
+                                    }}
+                                ></TextInput>
+                            </View>
                         </View>
 
                         <TaskCreationBottomGestureLabels

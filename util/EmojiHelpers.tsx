@@ -34,11 +34,15 @@ const SearchEmojis = (query: string, max: number, cb:IEmojiQueryCb):void => {
             console.log(err);
             cb([], err);
         } else {
-            var emojisOrdered = [];
+            var emojisOrdered:string[] = [];
             for (var i = 0; i < res.length; i++) {
                 var key:string = res[i];
                 var emArr:string[] = (EmojiData as any)[key];
                 for (var j = 0; j < emArr.length; j++) {
+                    // multiple keys can describe same emoji, so remove dupl
+                    if (emojisOrdered.indexOf(emArr[j]) !== -1) {
+                        continue;
+                    }
                     emojisOrdered.push(emArr[j]);
                 }
             }

@@ -1,3 +1,16 @@
+/*
+ *
+ * TODO
+ * improve the algorithm for matching words with emoji
+ * need to split string w spaces, and search each space for its own word then aggregate
+ * 
+ * 
+ */
+
+
+
+
+
 import { StackActions } from "@react-navigation/native";
 import * as React from "react";
 import { View , Text, TextInput} from "react-native";

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import {AntDesign} from '@expo/vector-icons';
+import TimeBubble from '../misc/TimeBubble';
 
 interface ITaskListElementProps {
     taskName : string;
@@ -21,27 +21,37 @@ class TaskListElement extends Component
         return (
             <View style={[styles.outerContainer, this.props.hasMargin ? styles.hasMargin : {}]}>
                 <View style={styles.innerContainer}>
+
                     <View style={styles.taskIconContainer}>
-                        {/* @ts-ignore */}
-                        <AntDesign name={this.props.icon} color="black" style={{fontSize: "77.5%", alignSelf:"flex-start"}}></AntDesign>
+                        <Text>insert icon</Text>
                     </View>
+
                     <View style={styles.taskDataContainer}>
+                        
                         <View
                             style={{
-                                flexGrow: 1,
-                                flexDirection: 'row'
+                                //borderWidth:1,
+                                width: "100%",
+                                flexDirection:"row"
                             }}
                         >
-                            <Text 
+                            <Text
                                 style={{
-                                    fontSize:16,
                                     flex: 1,
-                                    width: 1
+                                    //width: 1,
+                                    flexWrap: "wrap"
                                 }}
                             >{this.props.taskName}</Text>
                         </View>
 
-                        <Text >{this.props.time}</Text>
+                        <View
+                        >
+                            <TimeBubble
+                                time={69}
+                                maxTime={120}
+                                fontSize={14}
+                            />
+                        </View>
                     </View>
                 </View>
             </View>
@@ -71,19 +81,20 @@ const styles = StyleSheet.create({
     */
     innerContainer : {
         padding: 10,
-        flexDirection : 'row',
-        flexWrap: 'nowrap',
-        alignSelf: 'center'
+        flex: 1,
+        flexDirection : 'row'
     },
     taskIconContainer : { // TODO: center the icon better
-        flexBasis: "33%",
+        flex: 1,
         flexDirection : "column",
-        paddingRight: 10
+        paddingRight: 5
     },
     taskDataContainer : {
-        flexGrow: 1,
+        //borderWidth: 1,
+        flex: 2,
         flexDirection: "column",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: "flex-start"
     },
     hasMargin : {
         marginTop: 5,

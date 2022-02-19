@@ -1,3 +1,5 @@
+// just a testing screen with links
+
 import * as React from "react";
 import {View, Text, Button} from "react-native";
 import { SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
@@ -10,6 +12,13 @@ class StartScreen extends React.Component <any, any> {
 
                 <View>
                     <Text>Whats up</Text>
+
+                    <Button
+                        title="Home screen"
+                        onPress={()=>{
+                            this.props.navigation.navigate("HomeScreen");
+                        }}
+                    ></Button>
 
                     <Button
                         title="Go to tasks"

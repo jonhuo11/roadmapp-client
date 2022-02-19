@@ -18,13 +18,10 @@ import StandardScreenContainer from "../../components/container/StandardScreenCo
 import SwipeNavigable from "../../components/container/SwipeNavigable";
 import TaskCreationBottomGestureLabels from "../../components/task_list/TaskCreationBottomGestureLabels";
 import { TaskCreationStyles } from "./TaskNamingScreen";
+import TaskInfoMini from "../../components/task_list/TaskInfoMini";
 
 // left: TaskNaming
 // right: TaskIcon
-
-const styles = StyleSheet.create({
-
-});
 
 class TaskTimingScreen extends React.Component <any, {}>{
 
@@ -43,6 +40,13 @@ class TaskTimingScreen extends React.Component <any, {}>{
                 <StandardScreenContainer>
                     <View style={TaskCreationStyles.body}>
                         <View style={TaskCreationStyles.screenDescContainer}>
+
+                            <TaskInfoMini
+                                emoji="Emoji"
+                                name="Task Name"
+                                time="Time"
+                            />
+
                             <Text style={TaskCreationStyles.screenDesc}>
                                 How long will it take?
                             </Text>

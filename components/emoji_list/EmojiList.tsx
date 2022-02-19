@@ -1,5 +1,7 @@
 // horizontal flatlist of emojis
 
+// TODO: remap emojis so they are array of json mapped with an id for FlatList
+
 import React from "react";
 import { View, Text, FlatList, ListRenderItem } from "react-native";
 import BigEmoji from "./BigEmoji";

@@ -1,6 +1,7 @@
 import * as React from "react";
 import {StyleSheet, View, Text} from "react-native";
 import { SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+import DateDisplay from "../components/misc/DateDisplay";
 import TaskList from "../components/task_list/TaskList";
 
 class TaskListScreen extends React.Component <any, any> {
@@ -10,28 +11,33 @@ class TaskListScreen extends React.Component <any, any> {
                 <View style={styles.body}>
 
                     <View>
-                        <Text>Put a label on it!</Text>
+                        <DateDisplay
+                            date={new Date()}
+                            tstyle={{
+                                fontSize: 24
+                            }}
+                        />
                     </View>
 
                     <TaskList
-                    // just some filler for now
-                    tasks={[
-                        {
-                            taskName : "walk the dog",
-                            time: "1h",
-                            icon: "picture"
-                        },
-                        {
-                            taskName : "watch some lectures and take notes",
-                            time: "2h30m",
-                            icon: "find"
-                        },
-                        {
-                            taskName : "Send Child to daycare",
-                            time: "30m",
-                            icon: "customerservice"
-                        }
-                    ]}
+                        // just some filler for now
+                        tasks={[
+                            {
+                                taskName : "walk the dog",
+                                time: "1h",
+                                icon: "picture"
+                            },
+                            {
+                                taskName : "watch some lectures and take notes",
+                                time: "2h30m",
+                                icon: "find"
+                            },
+                            {
+                                taskName : "Send Child to daycare",
+                                time: "30m",
+                                icon: "customerservice"
+                            }
+                        ]}
                     ></TaskList>
 
                 </View>

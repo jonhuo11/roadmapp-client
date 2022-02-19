@@ -9,6 +9,7 @@ import LoginScreen from "./screens/LoginScreen";
 import TestScreen from "./screens/TestScreen";
 import TaskCreationScreenManager from "./screens/task_creation/TaskCreationScreenManager";
 import SignupScreen from "./screens/SignupScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,11 @@ class App extends React.Component{
                         headerShown: false
                     }}
                 >
+                    <Stack.Screen
+                        name="HomeScreen"
+                        component={HomeScreen}
+                    ></Stack.Screen>
+
                     <Stack.Screen
                         name="TestScreen"
                         component={TestScreen}

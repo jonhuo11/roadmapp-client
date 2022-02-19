@@ -13,6 +13,8 @@
     final swipe right exits this task creation subscreens and goes to task list, highlighting task
 
     TODO: make screen split follow finger when going back and forth
+
+    TODO: android back button might break this, need to disable 
 */
 
 import * as React from "react";

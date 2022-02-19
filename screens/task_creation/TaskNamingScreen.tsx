@@ -35,12 +35,18 @@ export const TaskCreationStyles = StyleSheet.create({
     screenDescContainer : {
         flex: 2,
         flexDirection: "column",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        alignItems: "center"
     },
     screenDesc: {
         fontSize: 32,
         textAlign: "center"
     },
+    miniDescText: {
+        fontSize: 22,
+        textAlign: "center"
+    },
+
     centerContainer : {
         flex: 5,
         flexDirection: "column",
